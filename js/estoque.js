@@ -113,6 +113,8 @@ async function carregarLotes(idProduto) {
         .eq('id_produto', idProduto)
         .order('data_validade', { ascending: true });
 
+        window.temLote = data && data.length > 0;
+
     if (error) {
         console.error(error);
         alert('Erro ao carregar lotes');
@@ -120,19 +122,26 @@ async function carregarLotes(idProduto) {
     }
 
     // NÃO TEM LOTES
+   const areaTipoLote = document.getElementById('areaTipoLote');
+
     if (!data || data.length === 0) {
 
-        select.innerHTML = '<option value="">Nenhum lote encontrado</option>';
-        select.disabled = true;
+    select.innerHTML = '<option value="">Nenhum lote encontrado</option>';
+    select.disabled = true;
 
-        // força criação
-        tipoLote.value = 'novo';
-        camposEntrada.classList.add('show');
+    tipoLote.value = 'novo';
+    camposEntrada.classList.add('show');
 
-        return;
+    // esconde tipo de lote
+    areaTipoLote.classList.remove('show');
+
+    // libera movimentação
+    document.getElementById('areaMovimentacao').classList.add('show');
+
+    return;
     }
 
-    // TEM LOTES → USAR SELECT
+    // TEM LOTES
     tipoLote.value = 'existente';
     camposEntrada.classList.remove('show');
 
@@ -157,8 +166,8 @@ async function carregarLotes(idProduto) {
 
         select.innerHTML += `
             <option value="${lote.id_lote}">
-        ${destaque}Lote ${lote.numero_lote}
-    </option>
+                ${destaque} Lote ${lote.numero_lote}
+            </option>
         `;
     });
 }
@@ -220,9 +229,19 @@ document.getElementById('loteSelect').addEventListener('change', async (e) => {
     const idLote = e.target.value;
     const detalhes = document.getElementById('detalhesLote');
 
-    // ❌ SEM LOTE SELECIONADO
-    if (!idLote) {
+        // SEM LOTE SELECIONADO
+        if (!idLote) {
+
+        // só esconde se NÃO estiver criando novo lote
+        const tipoLote = document.getElementById('tipoLote').value;
+
+        if (tipoLote !== 'novo') {
         areaMov.classList.remove('show');
+        }
+
+        document.getElementById('detalhesLote').classList.add('hidden');
+
+        return;
 
         // ESCONDE
         detalhes.classList.add('hidden');
@@ -235,7 +254,7 @@ document.getElementById('loteSelect').addEventListener('change', async (e) => {
         return;
     }
 
-    // ✅ COM LOTE
+    // COM LOTE
     areaMov.classList.add('show');
 
     const { data: lote, error } = await supabaseClient
@@ -264,10 +283,15 @@ document.getElementById('loteSelect').addEventListener('change', async (e) => {
     const camposEntrada = document.getElementById('camposEntrada');
 
     if (tipo === 'entrada') {
-        // mostra escolha de lote
-        areaTipoLote.classList.add('show');
 
-    } else if (tipo === 'saida') {
+    // só mostra se EXISTIR lote
+    if (window.temLote) {
+        areaTipoLote.classList.add('show');
+    } else {
+        areaTipoLote.classList.remove('show');
+    }
+}
+        else if (tipo === 'saida') {
         // esconde tudo relacionado a criação de lote
         areaTipoLote.classList.remove('show');
         camposEntrada.classList.remove('show');
