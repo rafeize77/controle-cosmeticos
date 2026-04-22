@@ -389,11 +389,11 @@ if (!idLote) {
     if (!sucesso) return;
 
     if (tipo === 'entrada' && tipoLote === 'novo') {
-    alert('✅ Novo lote criado com sucesso!');
+    alert(' Novo lote criado com sucesso!');
 } else if (tipo === 'entrada') {
-    alert('✅ Entrada registrada!');
+    alert(' Entrada registrada!');
 } else {
-    alert('✅ Saída registrada!');
+    alert(' Saída registrada!');
 }
     await carregarLotes(idProduto);
     await verificarEstoqueMinimo();
@@ -439,7 +439,7 @@ async function saidaEstoque(idLote, quantidade) {
     .insert([{
         id_lote: idLote,
         id_usuario: JSON.parse(localStorage.getItem('usuario')).id_usuario,
-        tipo_movimentacao: 'entrada',
+        tipo_movimentacao: 'saida',
         quantidade: quantidade,
         data_movimentacao: new Date().toISOString()
     }]);
