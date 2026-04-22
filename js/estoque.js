@@ -397,6 +397,8 @@ if (!idLote) {
 }
     await carregarLotes(idProduto);
     await verificarEstoqueMinimo();
+
+    location.reload();
 }
 
 // Limpar formulário
