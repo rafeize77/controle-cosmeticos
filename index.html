@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon</title>
+    <link rel="stylesheet" href="styles/login.css">
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    
+  <div class="container">  
+    <div class="form-box-login" id="form-login">
+        <form id="login">
+            <h1>Bem vindo ao nosso site!</h1>
+            <Div class="input-box">
+                <input placeholder="Digite seu email..." type="email" id="email-login">
+                <span class="material-symbols-outlined">person</span>
+            </Div>
+             <Div class="input-box">
+                <input placeholder="Digite sua senha..." type="password" id="senha-login">
+                <span class="material-symbols-outlined">lock</span>
+            </Div>
+
+            <div class="lembrar">
+                <Label>
+                <input type="checkbox">
+                Manter logado?
+            </Label>
+            <a href="#">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="login">Login</button>
+
+            <div class="registro">
+                <p>Não tem uma conta? <a href="#" onclick="mostrarFormularioCadastro()">Cadastre-se</a></p>
+            </div>
+        </form>
+    </div>
+    
+    <div class="form-box-cadastro" id="form-cadastro">
+        <form id="cadastro">
+            <h1>Faça sua conta!</h1>
+
+            <Div class="input-box">
+                <input placeholder="Digite seu nome..." type="text" id="nome-cadastro">
+            </Div>
+
+            <Div class="input-box">
+                <input placeholder="Digite o email..." type="email" id="email-cadastro">
+            </Div>
+
+            <Div class="input-box">
+                <input placeholder="Digite sua senha..." type="password" id="senha-cadastro">
+            </Div>
+
+            <button type="submit" class="cadastrar">Cadastrar</button>
+
+            <div class="logar">
+                <p>Já tem uma conta? <a href="#" onclick="mostrarFormularioLogin()">Faça login.</a></p>
+            </div>
+        </form>
+    </div>
+  </div> 
+<footer> Horizon ©</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

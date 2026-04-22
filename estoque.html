@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Estoque</title>
+
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/estoque.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <h2>Horizon</h2>
+
+      <button class="menu-btn" onclick="window.location.href='home.html'">Dashboard</button>
+      <button class="menu-btn" onclick="window.location.href='produtos.html'">Produtos</button>
+      <button class="menu-btn active">Estoque</button>
+    </div>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <h2>Controle de Estoque</h2>
+
+      <div class="user-menu" onclick="toggleDropdown()">
+        <div class="user-info">
+          <span id="userNome"></span>
+          <span id="seta">▼</span>
+        </div>
+
+        <div class="dropdown" id="dropdown">
+          <p id="userNomeDrop"></p>
+          <small id="userEmail"></small>
+          <hr>
+          <p class="logout" onclick="logout()">Sair</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="content-wrapper estoque-wrapper">
+
+        <!-- CARD 1: SELEÇÃO -->
+        <div class="card" id="card-estoque">
+
+  <h3>Controle de Estoque</h3>
+
+  <div class="form-group">
+    <label>Produto</label>
+    <select id="produtoSelect">
+      <option value="">Selecione um produto</option>
+    </select>
+  </div>
+
+  <div id="areaLote" class="hidden">
+  <div class="form-group">
+    <label>Lote</label>
+    <select id="loteSelect">
+      <option value="">Selecione um lote</option>
+    </select>
+    <div id="detalhesLote" class="hidden">
+  <p><strong>Número:</strong> <span id="detNumero"></span></p>
+  <p><strong>Validade:</strong> <span id="detValidade"></span></p>
+  <p><strong>Quantidade:</strong> <span id="detQuantidade"></span></p>
+</div>
+  </div>
+</div>
+
+<div id="areaMovimentacao" class="hidden">
+
+  <hr style="margin: 20px 0;">
+  <h3>Movimentação</h3>
+
+  <div class="form-group">
+    <label>Tipo:</label>
+    <select id="tipoMovimentacao">
+      <option value="">Selecione:</option>
+      <option value="entrada">Entrada</option>
+      <option value="saida">Saída</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Quantidade:</label>
+    <input type="number" id="quantidadeMov">
+  </div>
+
+  <div id="areaTipoLote" class="hidden">
+  <div class="form-group">
+    <label>Tipo de Lote:</label>
+    <select id="tipoLote">
+      <option value="">Selecione:</option>
+      <option value="existente">Lote existente</option>
+      <option value="novo">Novo lote</option>
+    </select>
+  </div>
+
+</div>
+
+  <div id="camposEntrada" class="hidden">
+    <div class="form-group">
+      <label>Número do Lote:</label>
+      <input type="text" id="numeroLote">
+    </div>
+
+    <div class="form-group">
+      <label>Data de Validade:</label>
+      <input type="date" id="dataValidade">
+    </div>
+  </div>
+
+  <button onclick="registrarMovimentacao()">Registrar</button>
+
+</div>
+
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/supabase.js"></script>
+  <script src="js/estoque.js"></script>
+</body>
+</html>

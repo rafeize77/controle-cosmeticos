@@ -1,0 +1,168 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* LAYOUT */
+.layout {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: white;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+/* MAIN */
+.main {
+    margin-left: 240px;
+    margin-top: 70px;
+    padding: 20px;
+
+    width: calc(100% - 240px); /* 🔥 ESSA LINHA RESOLVE */
+}
+
+/* TOPBAR */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 240px;
+    right: 0;
+    height: 70px;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+    z-index: 100;
+}
+
+/* MENU BUTTONS */
+.menu-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #f1f5f9;
+    color: #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    background: #e2e8f0;
+}
+
+.menu-btn.active {
+    background: #e0e7ff;
+    color: #3b82f6;
+}
+
+/* HEADER (reutilizável em qualquer página) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h3 {
+    font-weight: 600;
+}
+
+/* USER MENU */
+.user-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-menu span {
+    font-weight: 600;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#seta {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.seta-ativa {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    width: 180px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.dropdown p {
+    margin: 5px 0;
+}
+
+.dropdown small {
+    color: #64748b;
+}
+
+.dropdown hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #e2e8f0;
+}
+
+.logout {
+    color: red;
+    cursor: pointer;
+}
+
+.logout:hover {
+    opacity: 0.7;
+}
+
+/* CARD (GLOBAL AGORA) */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* BOTÕES PADRÃO */
+button {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}

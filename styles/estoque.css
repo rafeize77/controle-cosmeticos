@@ -1,0 +1,71 @@
+.form-group {
+    margin-top: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #334155;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+button {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+}
+
+.show {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#card-estoque {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-left: 5px solid #3b82f6;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

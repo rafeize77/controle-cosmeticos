@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link rel="stylesheet" href="styles/global.css">
+<link rel="stylesheet" href="styles/home.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+    <h2>Horizon</h2>
+
+    <button class="menu-btn active">Dashboard</button>
+    <button class="menu-btn" onclick="irProdutos()">Produtos</button>
+    <button class="menu-btn" onclick="irEstoque()">Estoque</button>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+    <h3>Dashboard</h3>
+
+    <div class="user-menu" onclick="toggleMenu(event)">
+        <div class="user-info">
+            <span id="usuarioNome"></span>
+            <span id="seta">▼</span>
+        </div>
+
+        <div class="dropdown" id="dropdown">
+            <p id="dropdownNome"></p>
+            <small id="dropdownEmail"></small>
+            <hr>
+            <p class="logout" onclick="logout()">Sair</p>
+        </div>
+    </div>
+</header>
+
+        <!-- CARDS -->
+    <div class="cards">
+        <div class="card">
+                <h4>Clientes</h4>
+                <p id="totalClientes">0</p>
+            </div>
+
+            <div class="card">
+                <h4>Últimos Itens</h4>
+                <ul id="ultimosItens">0</ul>
+            </div>
+
+            <div class="card">
+                <h4>Pedidos</h4>
+                <p id="totalPedidos">0</p>
+            </div>
+
+            
+
+        </div>
+    </div>
+</div>
+
+    </div>
+
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/home.js"></script>

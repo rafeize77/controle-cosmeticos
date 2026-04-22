@@ -1,0 +1,67 @@
+/* GRID FORM */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* INPUT PADRÃO */
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+/* BOTÃO PRINCIPAL */
+.form-card button {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 15px;
+}
+
+.form-card button:hover {
+    background: #2563eb;
+}
+
+/* TABLE */
+.table-card {
+    margin-top: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    color: #64748b;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+td {
+    padding: 10px 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* BOTÕES AÇÃO */
+.edit {
+    background: #e0e7ff;
+    color: #3b82f6;
+    margin-right: 5px;
+}
+
+.delete {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
