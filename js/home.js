@@ -4,7 +4,9 @@ if (!usuario) {
     window.location.href = "login.html"
 }
 
-carregarUltimosItens();
+window.onload = () => {
+    carregarUltimosItens();
+};
 
 // Preenche dados
 document.getElementById("usuarioNome").innerText = usuario.nome
