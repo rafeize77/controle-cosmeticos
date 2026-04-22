@@ -170,18 +170,34 @@ async function editarProduto(id) {
 
 async function excluirProduto(id) {
 
-    const { error } = await supabaseClient
-        .from('produto')
-        .delete()
-        .eq('id_produto', id);
+    const confirmar = confirm("Tem certeza que deseja excluir este produto?");
+    if (!confirmar) return;
 
-    if (error) {
-        console.error(error);
-        alert('Erro ao excluir');
-        return;
+    try {
+
+        // 1. Deleta os lotes primeiro
+        const { error: erroLote } = await supabaseClient
+            .from('lote')
+            .delete()
+            .eq('id_produto', id);
+
+        if (erroLote) throw erroLote;
+
+        // 2. Agora deleta o produto
+        const { error: erroProduto } = await supabaseClient
+            .from('produto')
+            .delete()
+            .eq('id_produto', id);
+
+        if (erroProduto) throw erroProduto;
+
+        alert("Produto e lotes excluídos com sucesso!");
+        carregarProdutos();
+
+    } catch (err) {
+        console.error(err);
+        alert("Erro ao excluir: " + err.message);
     }
-
-    carregarProdutos();
 }
 
 
