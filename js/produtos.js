@@ -175,7 +175,27 @@ async function excluirProduto(id) {
 
     try {
 
-        // 1. Deleta os lotes primeiro
+        // 1. buscar lotes do produto
+        const { data: lotes, error: erroBusca } = await supabaseClient
+            .from('lote')
+            .select('id_lote')
+            .eq('id_produto', id);
+
+        if (erroBusca) throw erroBusca;
+
+        const idsLotes = lotes.map(l => l.id_lote);
+
+        // 2. deletar movimentações desses lotes
+        if (idsLotes.length > 0) {
+            const { error: erroMov } = await supabaseClient
+                .from('movimentacao')
+                .delete()
+                .in('id_lote', idsLotes);
+
+            if (erroMov) throw erroMov;
+        }
+
+        // 3. deletar lotes
         const { error: erroLote } = await supabaseClient
             .from('lote')
             .delete()
@@ -183,7 +203,7 @@ async function excluirProduto(id) {
 
         if (erroLote) throw erroLote;
 
-        // 2. Agora deleta o produto
+        // 4. deletar produto
         const { error: erroProduto } = await supabaseClient
             .from('produto')
             .delete()
@@ -191,7 +211,7 @@ async function excluirProduto(id) {
 
         if (erroProduto) throw erroProduto;
 
-        alert("Produto e lotes excluídos com sucesso!");
+        alert("Produto excluído com sucesso!");
         carregarProdutos();
 
     } catch (err) {
