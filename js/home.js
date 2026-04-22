@@ -53,7 +53,7 @@ function irEstoque(){
 
 async function carregarUltimosItens() {
 
-    const lista = document.getElementById('ultimosItens');
+    const lista = document.getElementById('ultimasMovimentacoes');
     lista.innerHTML = '';
 
     const { data, error } = await supabaseClient
