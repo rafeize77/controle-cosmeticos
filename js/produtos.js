@@ -169,9 +169,6 @@ async function editarProduto(id) {
 // EXCLUIR
 
 async function excluirProduto(id) {
-    const confirmar = confirm('Deseja excluir este produto?');
-
-    if (!confirmar) return;
 
     const { error } = await supabaseClient
         .from('produto')
