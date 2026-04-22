@@ -92,7 +92,7 @@ async function carregarUltimosItens() {
 
         if (item.tipo_movimentacao === 'entrada') {
             texto = `Adicionado ${item.quantidade} ao lote ${lote} (${produto})`;
-        } else {
+        } else if (item.tipo_movimentacao === 'saida') {
             texto = `Removido ${item.quantidade} do lote ${lote} (${produto})`;
         }
 
